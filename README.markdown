@@ -1,6 +1,6 @@
 # Zu Zitter Carzay
 
-* Audio: Inspired by the legendary Oberheim DMX manufactured by Obeheim Electronics. This project is an homage to the original.
+* Audio: Inspired by the legendary Oberheim DMX manufactured by Obeheim Electronics.
 
 * Visual: Inspired by Nintendo Mario Brothers, Dr. Seuss, and Oberheim analog drum machine.
 
