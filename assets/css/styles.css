@@ -1,0 +1,505 @@
+/* styles */
+  /* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
+  html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+
+
+
+.bg {
+    background-image: linear-gradient(to bottom, #2989d8 22%,#2989d8 22%,#87d3f5 63%,#ffffff 100%);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.controls {
+    background: url(../../images/ground-tile.jpg) repeat-x bottom center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+}
+.controls.moving {
+    animation: moveGround 10s linear infinite;
+}
+
+@keyframes moveGround {
+    from {
+        background-position: bottom right;
+    }
+    to {
+        background-position: bottom left;
+    }
+}
+
+.row {
+    position: absolute;
+    min-width: 580px;
+    bottom: 200px;
+    left: 50%;
+    margin-left: -319px;
+}
+
+.row:nth-of-type(2n) .jumper {
+    background: url(../../images/mariosheet.png) no-repeat;
+    background-size: cover;
+}
+
+.row:nth-of-type(2n + 1) .jumper {
+    background: url(../../images/luigisheet.png) no-repeat;
+    background-size: cover;
+}
+
+.jumper {
+    width: 45px;
+    height: 50px;
+    background-position: left;
+    position: absolute;
+    top: -50px;
+    left: 12px;
+}
+
+.jumper.jumping {
+    animation: jumper 3000ms linear infinite;
+}
+.row:nth-of-type(n) .jumper.jumping,
+.row:nth-of-type(n) .jumper.getCoin {
+    background-position: right;
+}
+.jumper.hop,
+.jumper.getCoin {
+    animation: hop 100ms linear;
+}
+
+.jumper .coin {
+    position: absolute;
+    top: -20px;
+    left: 30px;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    opacity: 0;
+    background: url(../../images/coin.png) no-repeat;
+    background-size: cover;
+}
+
+.jumper.getCoin .coin {
+    animation: coinflip 100ms linear;
+}
+
+@keyframes jumper {
+    0% {
+        transform: translate(12px, 0);
+    }
+    12.5% {
+        transform: translate(88px, -200%);
+    }
+    25% {
+        transform: translate(154px, 0);
+    }
+    37.5% {
+        transform: translate(220px, -200%);
+    }
+    50% {
+        transform: translate(296px, 0);
+    }
+    62.5% {
+        transform: translate(362px, -200%);
+    }
+    75% {
+        transform: translate(440px, 0);
+    }
+    87.5% {
+        transform: translate(506px, -200%);
+    }
+    100% {
+        transform: translate(680px, 120px);
+    }
+}
+
+@keyframes hop {
+    0% {
+        transform: translate(0, 0);
+    }
+    30% {
+        transform: translate(0, -200%);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes coinflip {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    10% {
+        transform: translate(0, 0);
+    }
+    30% {
+        transform: translate(0, -400%);
+    }
+    99% {
+        transform: translate(0, -200%);
+    }
+}
+
+.cloud {
+    position: absolute;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    background-image: linear-gradient(to top, #32b4ff 22%,#32b4ff 22%,#87d3f5 63%,#ffffff 100%);
+    animation: cloud 15s linear infinite;
+}
+
+@keyframes cloud {
+    0% {
+        margin-left: 1500px;
+        opacity: 0;
+    }
+    3% {
+        opacity: 1;
+    }
+    97% {
+        opacity: 1;
+    }
+    100% {
+        margin-left: -100px;;
+        opacity: 0
+    }
+}
+
+.cloud.one {
+    transform: scale3d(2.5, 0.35,1);
+    bottom: 30%;
+    left: 40%;
+    animation: cloud 30s linear infinite;
+}
+.cloud.two {
+    transform: scale3d(3, 0.5,.4);
+    top: 30%;
+    left: 10%;
+    animation: cloud 15s linear infinite;
+}
+.cloud.three {
+    transform: scale3d(2, 0.25,.3);
+    top: 50%;
+    left: 50%;
+    animation: cloud 20s linear infinite;
+}
+.cloud.four {
+    transform: scale3d(3, 0.5,.1);
+    top: 20%;
+    left: 38%;
+    animation: cloud 17s linear infinite;
+}
+.cloud.five {
+    transform: scale3d(3, 0.5,.8);
+    top: 5%;
+    left: 0;
+    animation: cloud 22s linear infinite;
+}
+.cloud.six {
+    transform: scale3d(1, 0.15,1.5);
+    top: 30%;
+    left: 10%;
+    animation: cloud 30s linear infinite;
+}
+.cloud.seven {
+    transform: scale3d(2.5, 0.35,1);
+    top: 59%;
+    left: 58%;
+    animation: cloud 25s linear infinite;
+}
+
+.calliope {
+    position: absolute;
+    bottom: 100px;
+    right: 0;
+    margin-right: -126px;
+    width: 126px;
+    height: 83px;
+    background: url(../../images/calliope.png) no-repeat;
+    background-size: cover;
+}
+.calliope .wheel {
+    position: absolute;
+    background: url(../../images/roundcake.png) no-repeat;
+    background-size: cover;
+}
+.calliope .front {
+    width: 22px;
+    height: 22px;
+    bottom: 0;
+    left: 0;
+    animation: rotating 700ms linear infinite;
+}
+.calliope .rear {
+    width: 26px;
+    height: 26px;
+    bottom: 0;
+    right: 13px;
+    animation: rotating 700ms linear infinite;
+}
+.calliope.active {
+    animation: calliope 15s linear infinite;
+}
+@keyframes calliope {
+    0% {
+        right: 0;
+        margin-right: -126px;
+    }
+    100% {
+        right: 100%;
+        margin-right: 126px;
+    }
+}
+
+nav {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.bank {
+    position: absolute;
+    color: brown;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    line-height: -200px;
+    overflow: hidden;
+    text-indent: 120%;
+    white-space: nowrap;
+}
+.bank:not(.active):hover {
+    white-space: normal;
+    text-indent: 0;
+    overflow: visible;
+    text-decoration: none;
+    text-transform: lowercase;
+    text-align: center;
+}
+
+.bank span {
+    position: relative;
+    top: -100px;
+    display: block;
+    width: auto;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+.bank:not(.active):hover span {
+    background-color: beige;
+}
+
+.bank:not(.active):hover span:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    margin-left: -10px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: beige;
+    transform: rotate(45deg);
+}
+
+.bank.one {
+    top: 40%;
+    left: 10%;
+    margin-top: -75px;
+    margin-left: -75px;
+    width: 150px;
+    height: 150px;
+    background: url(../../images/mouth.png) no-repeat;
+    background-position: center;
+    background-size: contain;
+    transform: scale3d(.5, .5, 1);
+}
+.bank.two {
+    top: 40%;
+    left: 30%;
+    margin-top: -85px;
+    margin-left: -63px;
+    width: 126px;
+    height: 171px;
+    background: url(../../images/kitty.png) no-repeat;
+    background-size: cover;
+    transform: scale3d(.5, .5, 1);
+}
+.bank.three {
+    top: 40%;
+    left: 50%;
+    margin-top: -65px;
+    margin-left: -63px;
+    width: 126px;
+    height: 130px;
+    background: url(../../images/pumpkin.png) no-repeat;
+    transform: scale3d(.5, .5, 1);
+}
+.bank.four {
+    top: 40%;
+    right: 30%;
+    margin-top: -63px;
+    margin-right: -63px;
+    width: 126px;
+    height: 126px;
+    background: url(../../images/bear.png) no-repeat;
+    transform: scale3d(.5, .5, 1);
+}
+.bank.five {
+    top: 40%;
+    right: 10%;
+    margin-top: -63px;
+    margin-right: -63px;
+    width: 126px;
+    height: 126px;
+    background: url(../../images/tiger.png) no-repeat;
+    transform: scale3d(.5, .5, 1);
+}
+.bank.active {
+    transform: scale(1);
+    animation: activeBank 200ms linear infinite;
+}
+
+
+@keyframes activeBank {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+.simple-button {
+    border: none;
+    background: url(../../images/simple-button-Q.jpg) no-repeat;
+    background-size: cover;
+    width: 33px;
+    height: 33px;
+    overflow: hidden;
+    text-indent: 120%;
+    white-space: nowrap;
+    padding: 0;
+    float: left;
+}
+
+
+.simple-button.active { background: url(../../images/simple-button-brick.jpg) no-repeat; }
+
+.simple-button.on { border: 1px solid red; }
+
+.simple-button:nth-of-type(4n+1) {  margin-left: 12px; }
+
+/*.start-stop,
+.swing {
+    width: 100px;
+    margin: 0 0 20px 458px;
+}*/
+.functions {
+    position: absolute;
+    bottom: 16px;
+}
+.top-btn button {
+    display: block;
+    border: none;
+    background: url(../../images/start-stop.jpg) no-repeat center top;
+    width: 39px;
+    height: 36px;
+    overflow: hidden;
+    text-indent: 120%;
+    white-space: nowrap;
+    margin: 8px auto;
+}
+
+.top-btn button.active { background: url(../../images/start-stop-active.jpg) no-repeat center top; }
+
+.top-btn span {
+    display: block;
+    color: #fff;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    width: inherit;
+    text-align: center;
+}
+
+.toggle-pattern {
+    float: left;
+    margin-left: 30vw;
+}
+
+.start-stop,
+.swing {
+    float: left;
+    margin-left: 10vw;
+}
+
+.tempo {
+    width: 70px;
+    position: absolute;
+    bottom: 12px;
+    right: 17px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(0,0,0,.5);
+}
+
+.tempo input {
+    background: none;
+    border: none;
+    color: #f00;
+    font-size: 26px;
+    width: inherit;
+    text-align: center;
+}
+
+.tempo label {
+    display: block;
+    color: #fff;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    width: inherit;
+    text-align: center;
+    margin-top: 4px;
+}
+
+.glow {
+    position: absolute;
+    width: 99px;
+    height: 99px;
+    background: url(../../images/roundcake.png) no-repeat;
+    top: 38px;
+    right: 80px;
+    border-radius: 50%;
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+.glow.rotate {
+    animation: rotating 200ms linear infinite;
+    box-shadow: 0 0 100px rgba(255,144,22,1);
+}
+.overlay p {
+    font-size: 40px;
+    color: #fff;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 25%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.hide { display: none; }
